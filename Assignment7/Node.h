@@ -18,49 +18,31 @@ private:
 public:
 	
 	//********	 Constructors	********
-	template <class T>
+	
 	Node()
 	{
-		mName = "";
+		mName;
 		mNext = NULL;
 		mPrev = NULL;
 	}
 	//OverLoaded constructor. Initilizes object name value with given string.
 	//If the string passed is not valid, 0 are added until proper size.
-	template <class T>
+	
 	Node(T myName)
 	{
-		string testStr;
-		istringstream iss(myName);
-		iss >> testStr;
-		if (iss.eof() == true && testStr != "")
-		{
-			if (setName(myName) == false )
-			{
-				myName.append(3 - myName.size(), '0');
-				setName(myName);
-			}
-		}
+		
+		mName = myName;
 		mNext = NULL;
 		mPrev = NULL;
 	}
 	//OverLoaded constructor. Initilizes object name value with given string, next node pointer to nextNode's 
 	//address and previous node pointer to prevNode's address.
 	//If the string passed is not valid, 0 are added until proper size.
-	template <class T>
+	
 	Node(T myName, Node& nextNode, Node& prevNode)
 	{
-		string testStr;
-		istringstream iss(myName);
-		iss >> testStr;
-		if (iss.eof() == true && testStr != "")
-		{
-			if (setName(myName) == false)
-			{
-				testStr.append(3 - testStr.size(), '0');
-				setName(testStr);
-			}
-		}
+		
+			mName = myName;
 		mNext = &nextNode;
 		mPrev = &prevNode;
 	}
@@ -116,7 +98,7 @@ public:
 	template <class T>
 	void Node<T>::nameValid(T const &nameStr)
 	{
-		if (nameStr.empty())
+		/*if (nameStr.empty())
 		{
 			throw NameisEmpty();
 
@@ -124,7 +106,7 @@ public:
 		else if (nameStr.length() < 3)
 		{
 			throw NametooShort();
-		}
+		}*/
 	}
 	//Sets a Node Pointer to the next Node in the list.
 	template <class T>

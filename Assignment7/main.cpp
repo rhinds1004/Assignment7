@@ -44,32 +44,47 @@ int main()
 	////Queue class testing
 	//queueTest();
 	//std::cout << "Creating 3 nodes to ensure name validation" << std::endl;
-	//Node<string> n1("");
-	//Node<string> n2("w");
-	//Node<string> n3("");
-	//n1.setName("Jackers");
+	Node<string> n1;
+	Node<string> n2("w");
+	Node<string> n3("");
+	n1.setName("Jackers");
 
-	//std::cout << n1.getName() << std::endl;
-	//std::cout << n2.getName() << std::endl;
-	//std::cout << n3.getName() << std::endl;
+	std::cout << n1.getName() << std::endl;
+	std::cout << n2.getName() << std::endl;
+	std::cout << n3.getName() << std::endl;
 
-	////shows node members get properly set.
-	//std::cout << "showing node member variables being set.\n" << std::endl;
-	//n1.setNextNode(&n2);
-	//n2.setNextNode(&n3);
-	//n2.setPrevNode(&n1);
-	//std::cout << n1.getNextNode() << std::endl;
-	//std::cout << n2.getPrevNode() << std::endl;
+	//shows node members get properly set.
+	std::cout << "showing node member variables being set.\n" << std::endl;
+	n1.setNextNode(&n2);
+	n2.setNextNode(&n3);
+	n2.setPrevNode(&n1);
+	std::cout << n1.getNextNode() << std::endl;
+	std::cout << n2.getPrevNode() << std::endl;
 
-	////showing constructor that takes arguements 
-	//std::cout << "Creating a node with a string Nikkers and setting \nthe node's members variable to previously created nodes\n" << std::endl;
-	//Node<string> n4("Nikkers", n2, n1);
-	//std::cout << n4.getName() << std::endl;
-	//std::cout << n4.getNextNode() << std::endl;
-	//std::cout << n4.getPrevNode() << std::endl << std::endl;
-	//
-	Node<int> n5(5);
+	//showing constructor that takes arguements 
+	std::cout << "Creating a node with a string Nikkers and setting \nthe node's members variable to previously created nodes\n" << std::endl;
+	Node<string> n4("Nikkers", n2, n1);
+	std::cout << n4.getName() << std::endl;
+	std::cout << n4.getNextNode() << std::endl;
+	std::cout << n4.getPrevNode() << std::endl << std::endl;
 	
+	Node<int> n5(5);
+	cout << n5.getName();
+	Node<int> n6;
+	n6.setName(8);
+	Node<int> n10;
+	Node<int> n11;
+	Node<int> n12;
+	cout << n6.getName();
+	cout << n10.getName();
+	cout << n11.getName();
+	cout << n12.getName();
+	Node<double> n7;
+	Node<double> n8;
+	Node<double> n9;
+	cout << n7.getName() << endl;
+	cout << n8.getName() << endl;
+	cout << n9.getName() << endl;
 	cin.get();
 	return 0;
 }
