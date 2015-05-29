@@ -21,29 +21,38 @@
 
 
 #include "Node.h"
-//#include "List.h"
-//#include "Stack.h"
-//#include "Queue.h"
+#include "List.h"
+#include "Stack.h"
+#include "Queue.h"
 using namespace std;
-//void listTest();
-//void stackTest();
-//void queueTest();
+void nodeTest();
+void listTest();
+void stackTest();
+void queueTest();
+
 int main()
 {
 	// Node class testing
-	//cout << " calling function that tests all the functions of the node class." << endl;
-	//List nodeTest;
-	//nodeTest.nodeTest();
-	//
-	////List class testing 
-	//listTest();
-	//
-	////Stack class testing
-	//stackTest();
-	//
-	////Queue class testing
-	//queueTest();
-	//std::cout << "Creating 3 nodes to ensure name validation" << std::endl;
+	nodeTest();
+	
+	//List class testing 
+	listTest();
+	
+	//Stack class testing
+	stackTest();
+	
+	//Queue class testing
+	queueTest();
+
+	cin.get();
+	return 0;
+}
+
+void nodeTest()
+{
+	//showing constructor with type string
+	cout << " calling function that tests all the functions of the node class." << endl;
+	std::cout << "Creating 3 string nodes" << std::endl;
 	Node<string> n1;
 	Node<string> n2("w");
 	Node<string> n3("");
@@ -61,103 +70,178 @@ int main()
 	std::cout << n1.getNextNode() << std::endl;
 	std::cout << n2.getPrevNode() << std::endl;
 
-	//showing constructor that takes arguements 
+	//showing constructor with type string that takes arguements 
 	std::cout << "Creating a node with a string Nikkers and setting \nthe node's members variable to previously created nodes\n" << std::endl;
 	Node<string> n4("Nikkers", n2, n1);
 	std::cout << n4.getName() << std::endl;
 	std::cout << n4.getNextNode() << std::endl;
 	std::cout << n4.getPrevNode() << std::endl << std::endl;
-	
+	//showing constructor with type int and double that takes arguements 
+	std::cout << "Creating 2 int nodes" << std::endl;
 	Node<int> n5(5);
 	cout << n5.getName();
 	Node<int> n6;
+	cout << n6.getName() << endl;;
+	std::cout << "setting the name of default constructor node" << std::endl;
 	n6.setName(8);
-	Node<int> n10;
-	Node<int> n11;
-	Node<int> n12;
-	cout << n6.getName();
-	cout << n10.getName();
-	cout << n11.getName();
-	cout << n12.getName();
+	cout << n6.getName() << endl;;
+	std::cout << "Creating 2 double nodes" << std::endl;
 	Node<double> n7;
-	Node<double> n8;
-	Node<double> n9;
+	Node<double> n8(3.14);
 	cout << n7.getName() << endl;
 	cout << n8.getName() << endl;
-	cout << n9.getName() << endl;
-	cin.get();
-	return 0;
+	std::cout << "setting the name of default constructor node" << std::endl;
+	n7.setName(1004.555);
+	cout << n7.getName() << endl;
+}
+//tests list's members.
+void listTest()
+{
+	//list constructor in action
+	List<string> alist("wee");
+	cout << "Created a list" << endl;
+	cout << alist << endl;
+	//showing addFirst() and addLast() 
+	cout << "Added a node to the front of the list with the string first" << endl;
+	alist.addFirst("first");
+	cout << "Added a node to the back of the list with the string last" << endl;
+	alist.addLast("last");
+	cout << alist << endl;
+	//shows sizeMe() in action.
+	cout << "\nThe list is checked to see if the list is empty with isEmpty() function" << endl;
+	if (alist.isEmpty() != true)
+	{
+		cout << "I have Stuff!" << endl;
+	}
+	//shows sizeMe() in action.
+	cout << "\nThe list size is checked with sizeMe() function" << endl;
+	cout << "my size is: " << alist.sizeMe() << endl << endl;
+	//removing nodes with removeFirst() and removeLast()
+	
+	cout << "this was the removed string of the last node in the list:" << alist.removeLast() << endl;
+	cout << alist << endl;
+	
+	cout << "this was the removed string of the first node in the list::" << alist.removeFirst() << endl;
+	cout << alist << endl<<endl;
+
+	cout << "Creating a list of ints then removing and catching expection if thrown" << endl;
+	List<int> alist2(5);
+	//exception handling for removeFirst()
+	try
+	{
+		cout << "this was the removed int of the last node in the list:" << alist2.removeLast() << endl;;
+		alist2.removeLast();
+		alist2.removeFirst();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
+	//exception handling for removeFirst()
+	try
+	{
+		alist2.removeFirst();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
 }
 
-//tests list's members.
-//void listTest()
-//{
-//	//list constructor in action
-//	string str1 = "wee";
-//	List alist(str1);
-//	cout << "Created a list" << endl;
-//	cout << alist << endl;
-//	//showing addFirst() and addLast() 
-//	cout << "Added a node to the front of the list with the string first" << endl;
-//	alist.addFirst("first");
-//	cout << "Added a node to the back of the list with the string last" << endl;
-//	alist.addLast("last");
-//	cout << alist << endl;
-//	//shows sizeMe() in action.
-//	cout << "\nThe list is checked to see if the list is empty with isEmpty() function" << endl;
-//	if (alist.isEmpty() != true)
-//	{
-//		cout << "I have Stuff!" << endl;
-//	}
-//	//shows sizeMe() in action.
-//	cout << "\nThe list size is checked with sizeMe() function" << endl;
-//	cout << "my size is: " << alist.sizeMe() << endl << endl;
-//	//removing nodes with removeFirst() and removeLast()
-//	
-//	cout << "this was the removed string of the last node in the list:" << alist.removeLast() << endl;
-//	cout << alist << endl;
-//	
-//	cout << "this was the removed string of the first node in the list::" << alist.removeFirst() << endl;
-//	cout << alist << endl<<endl;
-//
-//}
-//
-////tests the stack class
-//void stackTest()
-//{
-//	Stack myStack;
-//	//pushing nodes onto the stack .
-//	cout << "Pushing number 1, number 2, number 3 onto the stack" << endl;
-//	myStack.push("Number 1");
-//	myStack.push("Number 2");
-//	myStack.push("Number 3");
-//	cout << myStack << endl;
-//	//popping nodes off the stack
-//	cout << "Popped " << myStack.pop() << " off the stack." << endl;
-//	cout << "Popped " << myStack.pop() << " off the stack." << endl;	
-//	cout << myStack << endl;
-//	cout << myStack.pop() << endl;
-//	//showing if the stack is empty.
-//	cout << myStack.pop() << endl;
-//}
-//
-////tests queue class
-//void queueTest()
-//{
-//	Queue myQueue;
-//	//adding items into the queue
-//	cout << "Pushing number 4, number 5, number 6 and number 7 into the queue" << endl;
-//	myQueue.enqueue("Number 4");
-//	myQueue.enqueue("Number 5");
-//	myQueue.enqueue("Number 6");
-//	myQueue.enqueue("Number 7");
-//	cout << myQueue << endl;
-//	//removing items from the queue
-//	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
-//	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
-//	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
-//	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
-//	//showing checks to see if queue is empty
-//	myQueue.dequeue();
-//
-//}
+//tests the stack class
+void stackTest()
+{
+	Stack<string> myStack;
+	//pushing nodes onto the stack .
+	cout << "Pushing number 1, number 2, number 3 onto the stack" << endl;
+	myStack.push("Number 1");
+	myStack.push("Number 2");
+	myStack.push("Number 3");
+	cout << myStack << endl;
+	//popping nodes off the stack
+	cout << "Popped " << myStack.pop() << " off the stack." << endl;
+	cout << "Popped " << myStack.pop() << " off the stack." << endl;	
+	cout << myStack << endl;
+	cout << "Popped " << myStack.pop() << " off the stack." << endl;
+	//showing if the stack is empty.
+	try
+	{
+		myStack.pop();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
+	//creating an int Stack
+	Stack<int> myStackint;
+	//pushing nodes onto the stack .
+	cout << "Pushing integers 1,2,and 3 onto the stack" << endl;
+	myStackint.push(1);
+	myStackint.push(2);
+	myStackint.push(3);
+	cout << myStackint << endl;
+	//popping nodes off the stack
+	cout << "Popped " << myStackint.pop() << " off the stack." << endl;
+	cout << "Popped " << myStackint.pop() << " off the stack." << endl;
+	cout << "Popped " << myStackint.pop() << " off the stack." << endl;
+	cout << myStackint << endl;
+	//showing if the stack is empty.
+	try
+	{
+		myStackint.pop();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
+}
+
+//tests queue class
+void queueTest()
+{
+	Queue<string> myQueue;
+	//adding items into the queue
+	cout << "Pushing number 4, number 5, number 6 and number 7 into the queue" << endl;
+	myQueue.enqueue("Number 4");
+	myQueue.enqueue("Number 5");
+	myQueue.enqueue("Number 6");
+	myQueue.enqueue("Number 7");
+	cout << myQueue << endl;
+	//removing items from the queue
+	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueue.dequeue() << " from the front of the queue" << endl;
+	//showing checks to see if queue is empty
+	try
+	{
+		myQueue.dequeue();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
+	//creating an int Queue
+	Queue<int> myQueueint;
+	//adding items into the queue
+	cout << "Pushing integers 4, 5, 6 and 7 into the queue" << endl;
+	myQueueint.enqueue(4);
+	myQueueint.enqueue(5);
+	myQueueint.enqueue(6);
+	myQueueint.enqueue(7);
+	cout << myQueueint << endl;
+	//removing items from the queue
+	cout << "Dequeued " << myQueueint.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueueint.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueueint.dequeue() << " from the front of the queue" << endl;
+	cout << "Dequeued " << myQueueint.dequeue() << " from the front of the queue" << endl;
+	//showing checks to see if queue is empty
+	try
+	{
+		myQueue.dequeue();
+	}
+	catch (string error)
+	{
+		cout << error << endl;
+	}
+}

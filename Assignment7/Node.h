@@ -21,7 +21,6 @@ public:
 	
 	Node()
 	{
-		mName;
 		mNext = NULL;
 		mPrev = NULL;
 	}
@@ -46,7 +45,7 @@ public:
 		mNext = &nextNode;
 		mPrev = &prevNode;
 	}
-	bool setName(T const &);
+	void setName(T const &);
 	void setNextNode(Node<T>*);
 	void setPrevNode(Node<T>*);
 	// Accessors
@@ -54,8 +53,6 @@ public:
 	Node<T>* getNextNode() const;
 	Node<T>* getPrevNode() const;
 	void testNode();
-	//Utility
-	void nameValid(T const &nameStr);
 
 	//Expection Classes
 	class NametooShort {};
@@ -70,43 +67,9 @@ public:
 	//Returns a true value if expection isn't thrown in nameValid function.
 	//Returns false otherwise and prints errow message depending on what failed.
 	template <class T>
-	bool Node<T>::setName(T const &nameStr)
+	void Node<T>::setName(T const &nameStr)
 	{
-		bool status = false;
-
-		try
-		{
-			this->nameValid(nameStr);
-			mName = nameStr;
-			status = true;
-		}
-		catch (Node::NameisEmpty)
-		{
-			std::string errorMsg = "*Error* Name can not be left empty\n";
-			std::cout << errorMsg;
-
-		}
-		catch (Node::NametooShort)
-		{
-			std::string errorMsg = "*Error* Name must be greater than 2 characters\n";
-			std::cout << errorMsg;
-		}
-		return status;
-	}
-	//Checks to ensure the passed string is not empty or less than 3 characters
-	//expection object is thrown if string is empty or to short.
-	template <class T>
-	void Node<T>::nameValid(T const &nameStr)
-	{
-		/*if (nameStr.empty())
-		{
-			throw NameisEmpty();
-
-		}
-		else if (nameStr.length() < 3)
-		{
-			throw NametooShort();
-		}*/
+		mName = nameStr;
 	}
 	//Sets a Node Pointer to the next Node in the list.
 	template <class T>
